@@ -7,24 +7,29 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 class RozetkaTests {
+    String url = "https://rozetka.com.ua/";
+    String email = "testmail9379992@test.com";
+    String pass = "Qwerty321";
+    String username = "Тестовый Тест";
+
     @Test
     void RegistrationTestRozetka() {
         //Открываем сайт
-        open("https://rozetka.com.ua/");
+        open(url);
         //Кликаем на форму входа
         $("a.header-topline__user-link.link-dashed").click();
         //Переходим на форму регистрации
         $("a.auth-modal__register-link").click();
         //Вводим имя
-        $("input[formcontrolname=\"name\"]").setValue("Тестовый Тест");
+        $("input[formcontrolname=\"name\"]").setValue(username);
         //Вводим почту
-        $("input[formcontrolname=\"username\"]").setValue("testmail9379992@test.com");
+        $("input[formcontrolname=\"username\"]").setValue(email);
         //Вводим пароль
-        $("input[formcontrolname=\"password\"]").setValue("Qwerty321");
+        $("input[formcontrolname=\"password\"]").setValue(pass);
         //Нажимаем "Зарегистрироваться"
         $("button[type=\"submit\"]").click();
         //Проверяем что имя которое мы ввели при регистрации совпадает с тем что появилось. Если совпадает - считаем тест успешным
-        $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text("Тестовый Тест"));
+        $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text(username));
     }
 
     @Test
@@ -34,13 +39,13 @@ class RozetkaTests {
         //Нажимаем кнопку входа
         $("a.header-topline__user-link.link-dashed").click();
         //Вводим почту
-        $(byId("auth_email")).setValue("testmail9379992@test.com");
+        $(byId("auth_email")).setValue(email);
         //Вводим пароль
-        $(byId("auth_pass")).setValue("Qwerty321");
+        $(byId("auth_pass")).setValue(pass);
         //Нажимаем "Войти"
         $("button.button.button_size_large.button_color_green.auth-modal__submit").click();
         //Проверяем имя пользователя по аналогии с предыдущим тестом
-        $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text("Тестовый Тест"));
+        $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text(username));
     }
 
     @Test
@@ -50,13 +55,13 @@ class RozetkaTests {
         //Нажимаем на кнопку входа
         $("a.header-topline__user-link.link-dashed").click();
         //Вводим почту
-        $(byId("auth_email")).setValue("testmail9379992@test.com");
+        $(byId("auth_email")).setValue(email);
         //Вводим пароль
-        $(byId("auth_pass")).setValue("Qwerty321");
+        $(byId("auth_pass")).setValue(pass);
         //Нажимаем "Войти"
         $("button.button.button_size_large.button_color_green.auth-modal__submit").click();
         //Проверяем что залогинились
-        $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text("Тестовый Тест"));
+        $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text(username));
         //Открываем настройки
         open("https://my.rozetka.com.ua/profile/personal-information/");
         //Нажимаем на кнопку удаления аккаунта
