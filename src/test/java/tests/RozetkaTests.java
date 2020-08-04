@@ -35,7 +35,7 @@ class RozetkaTests {
     @Test
     void LoginTestRozetka() {
         //Открываем сайт
-        open("https://rozetka.com.ua/");
+        open(url);
         //Нажимаем кнопку входа
         $("a.header-topline__user-link.link-dashed").click();
         //Вводим почту
@@ -51,7 +51,7 @@ class RozetkaTests {
     @Test
     void AccountDeleteTestRozetka() {
         //Открываем сайт
-        open("https://rozetka.com.ua/");
+        open(url);
         //Нажимаем на кнопку входа
         $("a.header-topline__user-link.link-dashed").click();
         //Вводим почту
