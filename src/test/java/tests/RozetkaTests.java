@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-class RegistrationTestRozetka {
+class RozetkaTests {
     @Test
     void RegistrationTestRozetka() {
         //Открываем сайт
@@ -26,9 +26,7 @@ class RegistrationTestRozetka {
         //Проверяем что имя которое мы ввели при регистрации совпадает с тем что появилось. Если совпадает - считаем тест успешным
         $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text("Тестовый Тест"));
     }
-}
 
-class LoginTestRozetka {
     @Test
     void LoginTestRozetka() {
         //Открываем сайт
@@ -44,9 +42,7 @@ class LoginTestRozetka {
         //Проверяем имя пользователя по аналогии с предыдущим тестом
         $("a.header-topline__user-link.link-dashed").shouldHave(Condition.text("Тестовый Тест"));
     }
-}
 
-class AccountDeleteTestRozetka {
     @Test
     void AccountDeleteTestRozetka() {
         //Открываем сайт
