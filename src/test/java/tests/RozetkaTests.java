@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+import static utils.RandomData.*;
 
 class RozetkaTests {
     String url = "https://rozetka.com.ua/";
-    String email = "testmail9379992@test.com";
+    String email = "testmail@test.qa";
     String pass = "Qwerty321";
     String username = "Тестовый Тест";
 
@@ -23,9 +24,9 @@ class RozetkaTests {
         //Вводим имя
         $("input[formcontrolname=\"name\"]").setValue(username);
         //Вводим почту
-        $("input[formcontrolname=\"username\"]").setValue(email);
+        $("input[formcontrolname=\"username\"]").setValue(getRandomEmail());
         //Вводим пароль
-        $("input[formcontrolname=\"password\"]").setValue(pass);
+        $("input[formcontrolname=\"password\"]").setValue(getRandomString(10));
         //Нажимаем "Зарегистрироваться"
         $("button[type=\"submit\"]").click();
         //Проверяем что имя которое мы ввели при регистрации совпадает с тем что появилось. Если совпадает - считаем тест успешным
