@@ -20,9 +20,9 @@ class RegistrationRozetkaTests {
         //Переходим на форму регистрации
         $(".auth-modal__register-link").click();
         //Вводим имя
-        $("input[formcontrolname=\"name\"]").setValue(username);
+        $(by("formcontrolname", "name")).setValue(username);
         //Вводим почту
-        $("input[formcontrolname=\"username\"]").setValue(getRandomEmail());
+        $(by("formcontrolname", "username")).setValue(getRandomEmail());
         //Вводим пароль
         $(by("formcontrolname", "password")).setValue(getRandomString(10));
         //Нажимаем "Зарегистрироваться"
@@ -47,11 +47,11 @@ class LoginRozetkaTests {
         //Нажимаем кнопку входа
         $(".header-topline__user-link").click();
         //Вводим почту
-        $(("#auth_email")).setValue(email);
+        $("#auth_email").setValue(email);
         //Вводим пароль
-        $(("#auth_pass")).setValue(pass);
+        $("#auth_pass").setValue(pass);
         //Нажимаем "Войти"
-        $("button.button_size_large.button_color_green.auth-modal__submit").click();
+        $(".button.button_size_large.button_color_green.auth-modal__submit").click();
         //Проверяем имя пользователя по аналогии с предыдущим тестом
         $(".header-topline__user-link").shouldHave(text(username));
     }
@@ -72,11 +72,11 @@ class AccountRozetkaTests {
         //Нажимаем на кнопку входа
         $(".header-topline__user-link").click();
         //Вводим почту
-        $(("#auth_email")).setValue(email);
+        $("#auth_email").setValue(email);
         //Вводим пароль
-        $(("#auth_pass")).setValue(pass);
+        $("#auth_pass").setValue(pass);
         //Нажимаем "Войти"
-        $("button.button.button_size_large.button_color_green.auth-modal__submit").click();
+        $(".button.button_size_large.button_color_green.auth-modal__submit").click();
         //Проверяем что залогинились
         $(".header-topline__user-link").shouldHave(text(username));
         //Открываем настройки
@@ -84,12 +84,12 @@ class AccountRozetkaTests {
         //Нажимаем на кнопку удаления аккаунта
         $(byText("Удалить аккаунт")).click();
         //Подтверждаем удаление в чек-боксе
-        $("div.form__row.remove-account__checkbox").click();
+        $(".remove-account__checkbox").click();
         //Указываем причину удаления
-        $(byId("removeReason")).setValue("Because of test");
+        $("#removeReason").setValue("Because of test");
         //Нажимаем на кнопку "Удалить аккаунт"
-        $("button.button.button--medium.button--navy").click();
+        $(".button.button--medium.button--navy").click();
         //Проверяем что нас разлогинило (исходя из этого делаем вывод что аккаунт удален)
-        $("a.header-topline__user-link.link-dashed").shouldHave(text("войдите в личный кабинет"));
+        $(".header-topline__user-link").shouldHave(text("войдите в личный кабинет"));
     }
 }
